@@ -1,0 +1,20 @@
+pond_name,naturalness,salinity,avg_range_temp_c,area_acres,pollution_profile,road_drains,ownership,species,avg_depth_cm
+Sea Swept Farm Pond,Human influence,BR,unknown,0.45,N,Y,Private,F. bermudae,
+Seymour’s Pond,Human influence,BR,18.7-30.9,0.79,Y,Y,BDA Audubon Soc.,F. bermudae,UK
+South Pond,Human influence,BR,11.6-39.0 (23.8),0.44,Y,N,Private,F. bermudae,
+Cloverdale Pond,Human influence,FW,17.0-32.0,0.35,Y,Y,Private,F. bermudae,
+David’s Pond (Paget Marsh),Human influence,FW,13.6-31.6 (17.7),0.20,Y,Y,BDA Audubon Soc.,F. bermudae,
+Ocean View Club #9 pond,Human influence,FW,unknown,0.12,Y,N,BDA Government,F. bermudae,
+Somerset Long Bay Pond (east),Human influence,FW,19.0-33.0,0.72,Y,N,Buy Back BDA,F. bermudae,
+Bartram’s Pond,Human influence,M,13.9-31.7 (23.3),0.56,N,N,BDA Audubon Soc.,F. relictus,
+Blue Hole Bird Pond,Human influence,M,16.2-28.3 (23.2),0.22,N,N,BDA Government,F. bermudae,
+Cooper’s Island Pond,Human influence,M,unknown,0.24,N,N,BDA Government,F. relictus,
+Riddell’s Bay Club,Human influence,M,unknown,0.03,N,N,Private,F. bermudae,
+Shelly Bay Marsh Pond,Human influence,M,unknown,0.10,N,N,BDA Government,F. bermudae,
+Warwick Pond,Natural,BR,10.8-39.6 (24.0),2.76,Y,Y,BDA National Trust,F. bermudae,20
+Trott’s Pond,Natural,BR,16.0-31.0 (24.5),2.88,N,Y,Private,F. bermudae,
+East Walsingham Pond,Natural,M,19.0-27.7 (23.2),1.95,N,N,Walsingham Trust,F. bermudae,
+Evan’s Pond,Natural,M,17.0-32.0 (24.6),1.79,Y,Y,Private,F. bermudae,65
+Lover’s Lake,Natural,M,18.0-28.5 (23.7),1.01,Y,N,BDA Government,F. relictus,91
+Mangrove Lake,Natural,M,13.7-33.6 (24.6),9.89,Y,Y,Private,F. bermudae,134
+West Walsingham Ponds,Natural,M,12.4-37.9 (23.7),0.87,N,N,Wilkinson Trust,F. bermudae,
