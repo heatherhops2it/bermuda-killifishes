@@ -7,7 +7,7 @@
 library(tidyverse)
 library(seewave)   # install.packages("seewave")
 library(tuneR)  # install.packages("tuneR")
-
+library(soundecology)
 
 
 
@@ -30,31 +30,26 @@ rm(mgv_0518_2100)
 
 aci_values <- data.frame(NULL)
 
-file_list <- list.files("C:/Users/hng9/Downloads/output_tests/", full.names = TRUE)
+file_list <- list.files("C:/Users/hng9/Music/BDAKFP_2025_LVR/", full.names = TRUE)
+file_p1 <- file_list[1:50]
 
 
-for (i in file_list) {
+for (i in file_p1) {
   soundwave <- readWave(i)
   
-  interim_aci <- c(substr(i, 62, 76), ACI(soundwave, f = 48000, flim = c(0,2), wl = 2048, nbwindows = 10))
+  interim_aci <- c(substr(i, 61, 75), ACI(soundwave, f = 48000, flim = c(0,2), wl = 2048, nbwindows = 10))
   
   aci_values <- rbind(aci_values, interim_aci)
   
   rm(soundwave)
 }
 
+testing <- mapply(readWave, file_p1)
+aci_values <- mapply(ACI, testing, flim = c(0,2), wl = 2048, nbwindows = 10)
 
 
 
-# test flac-wav conversion ------------------------------------------------
+system.time(ACI(mgv_0518_2100, f = 48000, flim = c(0,2), wl = 2048, nbwindows = 10))
+system.time(ACI(mgv_0518_2100, f = 48000, flim = c(0,2), wl = 2048, nbwindows = 1))
 
-
-wav_list <- list.files("C:/Users/hng9/Downloads/tests/", full.names = TRUE)
-
-wav2flac(file = wav_list[1], reverse = TRUE, path2exe = "C:/flac/flac-1.5.0-win/Win64/")
-
-unlink("C:/Users/hng9/Downloads/tests/S1130_048K_MGV_10457639_20250518_210000.wav")
-
-
-
-
+system.time(acoustic_complexity(mgv_0518_2100, max_freq = 2000, j = 10, fft_w = 2048))
