@@ -29,8 +29,7 @@ rm(mgv_0518_2100)
 # test loop ---------------------------------------------------------------
 
 aci_values <- data.frame(NULL)
-aci_total <- data.frame(NULL)
-aci_minute <- data.frame(NULL)
+my_list <- NULL
 
 file_list <- list.files("C:/Users/hng9/Music/BDAKFP_2025_LVR/", full.names = TRUE)
 file_p1 <- file_list[1:50]
@@ -40,24 +39,27 @@ for (i in file_p1) {
   soundwave <- readWave(i)
   interim_aci <- acoustic_complexity(soundwave, max_freq = 2000, j = 10, fft_w = 2048)
   
-  interim_aci_total <- data.frame(c(substr(i, 61, 75), interim_aci[1]))
-  colnames(interim_aci_total) <- c("date", "aci_tot")
+  my_list <- interim_aci[c(1,3)] |>
+    as.data.frame()
+  my_list$date <- substr(i, 61, 75)
   
-  interim_aci_minute <- data.frame(c(substr(i, 61, 75), interim_aci[3]))
-  colnames(interim_aci_minute) <- c("date", "aci_min")
-  
-  
-  aci_total <- rbind(aci_total, interim_aci_total)
-  
-  aci_minute <- rbind(aci_minute, interim_aci_minute)
+  aci_values <- rbind(aci_values, my_list)
   
   rm(soundwave)
 }
 
-testing <- mapply(readWave, file_p1)
-aci_values <- mapply(ACI, testing, flim = c(0,2), wl = 2048, nbwindows = 10)
 
-substr(i, 61, 75) 
-
-
-system.time(acoustic_complexity(mgv_0518_2100, max_freq = 2000, j = 10, fft_w = 2048))
+for (i in file_p1) {
+  soundwave <- readWave(i)
+  interim_aci <- acoustic_complexity(soundwave, max_freq = 2000, j = 10, fft_w = 2048)
+  
+  my_list <- interim_aci[c(1,3)] |> 
+    unlist(use.names = TRUE) |> 
+    t() |> 
+    as.data.frame()
+  my_list$date <- substr(i, 61, 75)
+  
+  aci_values <- rbind(aci_values, my_list)
+  
+  rm(soundwave)
+}
