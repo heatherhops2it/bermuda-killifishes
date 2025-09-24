@@ -47,19 +47,3 @@ for (i in file_p1) {
   
   rm(soundwave)
 }
-
-
-for (i in file_p1) {
-  soundwave <- readWave(i)
-  interim_aci <- acoustic_complexity(soundwave, max_freq = 2000, j = 10, fft_w = 2048)
-  
-  my_list <- interim_aci[c(1,3)] |> 
-    unlist(use.names = TRUE) |> 
-    t() |> 
-    as.data.frame()
-  my_list$date <- substr(i, 61, 75)
-  
-  aci_values <- rbind(aci_values, my_list)
-  
-  rm(soundwave)
-}
