@@ -56,7 +56,7 @@ for (i in file_list) {
 files <- list.files("C:/Users/hng9/Music/BDAKFP_2025_LVR/", full.names = TRUE)
 
 file_list <- mapply(readWave, 
-                    files[1:250], 
+                    files[1:750], 
                     from = 0, 
                     to = 1, 
                     units = "minutes")
