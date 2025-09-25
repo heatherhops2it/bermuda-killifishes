@@ -56,7 +56,7 @@ for (i in file_list) {
 files <- list.files("C:/Users/hng9/Music/BDAKFP_2025_LVR/", full.names = TRUE)
 
 file_list <- mapply(readWave, 
-                    files[1:100], 
+                    files[1:250], 
                     from = 0, 
                     to = 1, 
                     units = "minutes")
@@ -69,8 +69,8 @@ aci_list <- lapply(file_list,
 aci_list <- as.data.frame(aci_list)
 
 testing <- t(aci_list) |> 
-  as.data.frame() |> 
-  mutate(date = substr(row.names(testing), 61, 75))
+  as.data.frame()
+testing <- testing |> mutate(date = substr(row.names(testing), 61, 75))
 
 
 
