@@ -7,7 +7,7 @@
 library(tidyverse)
 library(seewave)   # install.packages("seewave")
 library(tuneR)  # install.packages("tuneR")
-
+library(soundecology)
 
 
 
@@ -84,5 +84,44 @@ aci_proc <- aci_proc |> mutate(date = substr(row.names(aci_proc), 61, 75))
 
 aci_fin <- aci_fin |> 
   rbind(aci_proc)
+
+
+
+
+# Get ADI ------------------------------------------------------------------
+
+files <- list.files("C:/Users/hng9/Music/BDAKFP_2025_LVR/", full.names = TRUE)
+
+
+## first batch
+file_list <- mapply(readWave, 
+                    files[1:1000], 
+                    from = 0, 
+                    to = 1, 
+                    units = "minutes")
+
+adi_raw <- lapply(file_list,
+                  acoustic_diversity,
+                  max_freq = 2000)
+
+adi_proc <- as.data.frame(adi_raw)
+
+adi_fin <- t(adi_proc) |> 
+  as.data.frame() |> 
+  na.omit()
+
+adi_fin <- adi_fin |> mutate(date = substr(row.names(adi_fin), 61, 75))
+
+
+
+
+
+
+# Add location & export ---------------------------------------------------
+
+aci_fin <- aci_fin |> 
+  mutate(location = "LVR")
+
+write.csv(aci_fin, "processed_data/exploration_indices/LVR_indices.csv")
 
 
