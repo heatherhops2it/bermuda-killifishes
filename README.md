@@ -17,3 +17,29 @@ new fieldwork:
 * focus on recording some of the ponds instead of all of them (choose based on things like: did i find fish? were they kfish?)
 
 * do seine netting or minnow trapping to figure out what species are in there! maybe also do some eDNA (would need to collab with someone on that, maybe even J-P?) 
+
+<br>
+
+## for the winter symposium:
+
+* look at LVR, then MGV if have time
+
+* look at 24 hour period around new moon (27 May @ 00:02 ADT) and full moon (11 Jun @ 04:43 ADT)
+
+* converted to GMT, that's 27 May @ 03:00 GMT and 11 Jun @ 07:43 GMT
+
+* new moon files: 20250526_150000 to 20250527_144500
+
+* full moon files: 20250610_150000 to 20250611_144500
+
+Raven settings: 
+
+- Palette: Cool
+- Brightness: 60
+- Contrast: 70
+- Window size: 2048
+- 3 lines
+- x axis: 20 sec per line
+- y axis: 0 - 4 kHz
+
+I'm choosing a larger frequency range to encompass some of the terrestrial sounds (for fun?)
