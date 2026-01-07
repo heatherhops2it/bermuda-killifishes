@@ -32,6 +32,12 @@ new fieldwork:
 
 * full moon files: 20250610_150000 to 20250611_144500
 
+* looking at 1 minute every 30 minutes on these key lunar days
+
+* only boxing knocks/columns if there are multiple in a string (delta time between pulses is less than that between groups of pulses)
+
+* sounds with harmonics or smooth horizontals (i.e., not pulses) are boxed
+
 Raven settings: 
 
 - Palette: Cool
@@ -43,3 +49,6 @@ Raven settings:
 - y axis: 0 - 4 kHz
 
 I'm choosing a larger frequency range to encompass some of the terrestrial sounds (for fun?)
+
+Progress: next file is 20250527_013000
+
