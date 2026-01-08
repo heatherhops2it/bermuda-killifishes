@@ -50,5 +50,9 @@ Raven settings:
 
 I'm choosing a larger frequency range to encompass some of the terrestrial sounds (for fun?)
 
-Progress: next file is 20250527_013000
+Progress: next file is 20250611_020000
+
+Things to fix:
+
+- I accidentally added annotations to 20250610_151500. Must remove them for analysis.
 
