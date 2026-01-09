@@ -38,6 +38,8 @@ new fieldwork:
 
 * sounds with harmonics or smooth horizontals (i.e., not pulses) are boxed
 
+* annotation is done on visuals only
+
 Raven settings: 
 
 - Palette: Cool
@@ -50,9 +52,14 @@ Raven settings:
 
 I'm choosing a larger frequency range to encompass some of the terrestrial sounds (for fun?)
 
-Progress: next file is 20250611_020000
+Progress: LVR is complete. next MGV is: 20250526_163000
 
 Things to fix:
 
-- I accidentally added annotations to 20250610_151500. Must remove them for analysis.
+- I accidentally added annotations to LVR 20250610_151500. Must remove them for analysis.
 
+Ideas on annotation and hotkeys:
+
+- Sound source (Fish, Amphibian, Bird, hUman, Machine) - QWERT
+- Sound shape (Harmonic, Pulse, Whistle, Combination) - ASDF
+- Number of syllables or pulses (1, 2, 3, [etc.])
