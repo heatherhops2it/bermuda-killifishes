@@ -52,7 +52,7 @@ Raven settings:
 
 I'm choosing a larger frequency range to encompass some of the terrestrial sounds (for fun?)
 
-Progress: LVR is complete. next MGV is: 20250526_163000
+Progress: LVR is complete. next MGV is: 20250611_000000
 
 Things to fix:
 
