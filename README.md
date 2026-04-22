@@ -72,7 +72,7 @@ Ideas on annotation and hotkeys:
 
 * annotation visual only (?)
 
-* if it has GREEN or is connected to a GREEN SOUND it gets boxed
+* if it has CYAN or is connected to a CYAN SOUND it gets boxed
 
 * pulses and trains are BOTH boxed (individual pulses in boxes, surrounded by train box)
 
