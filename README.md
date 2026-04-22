@@ -63,3 +63,21 @@ Ideas on annotation and hotkeys:
 - Sound source (Fish, Amphibian, Bird, hUman, Machine) - QWERT
 - Sound shape (Harmonic, Pulse, Whistle, Combination) - ASDF
 - Number of syllables or pulses (1, 2, 3, [etc.])
+
+<br>
+
+## general diss stuff:
+
+* 2 min every 15 min
+
+* annotation visual only (?)
+
+Raven settings: 
+
+- Palette: Cool
+- Brightness: 60
+- Contrast: 70
+- Window size: 2048
+- 3 lines
+- x axis: 20 sec per line
+- y axis: 0 - 4 kHz
