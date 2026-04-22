@@ -68,9 +68,17 @@ Ideas on annotation and hotkeys:
 
 ## general diss stuff:
 
-* 2 min every 15 min
+* 1 min every 15 min
 
 * annotation visual only (?)
+
+* if it has GREEN or is connected to a GREEN SOUND it gets boxed
+
+* pulses and trains are BOTH boxed (individual pulses in boxes, surrounded by train box)
+
+* lack of clarity re: trains vs choruses... label as chorus if you cant distinguish between 2+ sound producers
+
+* LVR & MGV: 19 May @ 15:00:00 - 15 May @
 
 Raven settings: 
 
