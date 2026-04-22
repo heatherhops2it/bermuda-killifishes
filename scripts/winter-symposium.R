@@ -47,6 +47,31 @@ groupwinter <- sumwinter |>
 
 
 
+# separate little section for government report ---------------------------
+## making a graph of just the high-frequency/treefrogs
+
+highwinter <- high_freqs |> 
+  group_by(freq_band, site, dates) |> 
+  summarise(call_density = sum(pulses))
+highgroup <- highwinter |> 
+  mutate(hour = hour(dates)) |> 
+  mutate(groupy = floor(hour/3))
+write_csv(highgroup, file = "raw_data/winter-symposium/grouped_high_data.csv")
+himport <- read_csv("raw_data/winter-symposium/grouped_high_data.csv")
+himport |> 
+  mutate(groupy = as.character(groupy)) |> 
+  ggplot(aes(x = groupy, y = call_density)) +
+  geom_col(aes(fill = site), position = position_dodge(0.9)) +
+  scale_x_discrete(labels = c('00-02', '03-05', '06-08', '09-11', '12-14', '15-17', '18-20', '21-23')) +
+  labs(
+    x = "Hour (ADT)", 
+    y = "Number of Calls",
+    fill = "Site") +
+  theme_minimal() +
+  scale_fill_manual(values = c("#707070", "#303030"))
+
+
+
 # make graphs -------------------------------------------------------------
 
 ## date on x, density on y, colour is frequency band
@@ -61,7 +86,7 @@ groupwinter |>
     fill = "Frequency Band")
 
 ## date on x, density on y, colour is site
-groupwinter |> 
+groupwinter |>  
   mutate(groupy = as.character(groupy)) |> 
   ggplot(aes(x = groupy, y = call_density)) +
   geom_col(aes(fill = site), position = position_dodge(0.9)) +
