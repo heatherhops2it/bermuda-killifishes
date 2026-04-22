@@ -89,3 +89,5 @@ Raven settings:
 - 3 lines
 - x axis: 20 sec per line
 - y axis: 0 - 4 kHz
+
+up next: LVR 05-19 @ 16:30:00
