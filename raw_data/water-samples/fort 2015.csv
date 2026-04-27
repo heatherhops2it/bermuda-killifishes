@@ -1,0 +1,25 @@
+site,test_raw,test,value (mgkg)
+WWK,As,x75_as_he,2.21
+LVR,As,x75_as_he,1.99
+MGV,As,x75_as_he,2.89
+WWK,Cd,x111_cd_he,0.56
+LVR,Cd,x111_cd_he,2.34
+MGV,Cd,x111_cd_he,0.17
+WWK,Cr,x52_cr_he,2.62
+LVR,Cr,x52_cr_he,26.1
+MGV,Cr,x52_cr_he,1.88
+WWK,Cu,x63_cu_he,1.24
+LVR,Cu,x63_cu_he,3.62
+MGV,Cu,x63_cu_he,3.91
+WWK,Fe,x56_fe_he,98.4
+LVR,Fe,x56_fe_he,1045
+MGV,Fe,x56_fe_he,377
+WWK,Pb,x208_pb_he,5.76
+LVR,Pb,x208_pb_he,9.33
+MGV,Pb,x208_pb_he,0.89
+WWK,Ni,x60_ni_he,0.076
+LVR,Ni,x60_ni_he,0.47
+MGV,Ni,x60_ni_he,0.13
+WWK,Zn,x66_zn_he,4.62
+LVR,Zn,x66_zn_he,3.96
+MGV,Zn,x66_zn_he,1.4

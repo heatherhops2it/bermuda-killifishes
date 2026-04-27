@@ -2,6 +2,9 @@ library(tidyverse)
 library(janitor)
 
 
+# load in data and clean --------------------------------------------------
+
+
 df <- read_csv(file = "raw_data/water-samples/2025 diluted samples conc ppb.csv") |> 
   clean_names() 
 
@@ -15,6 +18,9 @@ df <- df |>
 
 
 
+# test out a graph --------------------------------------------------------
+
+
 df |> filter(test == "x75_as_he") |> 
   group_by(site) |> 
   ggplot(aes(x = sample_date, y = value)) +
@@ -22,6 +28,10 @@ df |> filter(test == "x75_as_he") |>
   facet_wrap(~site) +
   labs(title = "75 As [ He ]")
 
+
+
+
+# graph all contaminants --------------------------------------------------
 
 
 ## Fort et al (2015) looked at As, Cd, Cr, Cu, Fe, Pb, Ni, Zn, and Hg, which would be the following variables as a list:
@@ -41,6 +51,25 @@ df_s |> filter(test %in% sample_list) |>
   ggplot(aes(x = sample_group, y = avg_val)) +
   geom_point() +
   facet_wrap(~test, nrow = 2)
+
+
+
+# compare directly to fort ------------------------------------------------
+
+fort <- read_csv(file = "raw_data/water-samples/fort 2015.csv") |> 
+  clean_names()
+
+df_p <- df |> 
+  select(site, test, value) |> 
+  filter(site %in% c("WWK", "MGV", "LVR")) |> 
+  left_join(fort, by = join_by(test, site)) |> 
+  na.omit()
+
+
+## try plotting it?
+
+df_p
+
 
 
 
