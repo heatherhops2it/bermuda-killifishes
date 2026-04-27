@@ -36,7 +36,8 @@ df |> filter(test == "x75_as_he") |>
 
 ## Fort et al (2015) looked at As, Cd, Cr, Cu, Fe, Pb, Ni, Zn, and Hg, which would be the following variables as a list:
 
-sample_list <- c("x75_as_he", "x111_cd_he", "x52_cr_he", "x63_cu_he", "x56_fe_he", "x208_pb_he", "x60_ni_he", "x66_zn_he")
+sample_list <- data.frame(test = c("x75_as_he", "x111_cd_he", "x52_cr_he", "x63_cu_he", "x56_fe_he", "x208_pb_he", "x60_ni_he", "x66_zn_he"),
+                          new_names = c("As", "Cd", "Cr", "Cu", "Fe", "Pb", "Ni", "Zn"))
 
 
 daygroups <- data.frame(sample_date = c("6/9/2025", "6/16/2025", "6/6/2025", "6/15/2025", "6/17/2025", "6/7/2025" ),
@@ -45,12 +46,13 @@ daygroups <- data.frame(sample_date = c("6/9/2025", "6/16/2025", "6/6/2025", "6/
 df_s <- df |>  select(site, sample_date, test, value) |> 
   left_join(daygroups, by = join_by(sample_date)) |> 
   group_by(test, sample_group) |> 
-  summarise(avg_val = mean(value, na.rm = TRUE))
+  summarise(avg_val = mean(value, na.rm = TRUE)) |> 
+  left_join(sample_list, by = join_by(test))
 
-df_s |> filter(test %in% sample_list) |> 
+df_s |> filter(test %in% sample_list$test) |> 
   ggplot(aes(x = sample_group, y = avg_val)) +
   geom_point() +
-  facet_wrap(~test, nrow = 2)
+  facet_wrap(~new_names, nrow = 2)
 
 
 
@@ -68,9 +70,16 @@ df_p <- df |>
 
 ## try plotting it?
 
-df_p
+df_p |> filter(test_raw %in% c("As", "Cd", "Cr", "Cu", "Ni", "Pb", "Zn")) |> 
+  mutate(value = 1000*value) |>    ## converts ppb into mg/kg
+  ggplot(aes(x = test_raw, y = value, colour = site)) +
+  geom_point() +
+  facet_wrap(~site)
 
-
+df_p |> filter(test_raw %in% c("As", "Cd", "Cr", "Cu", "Ni", "Pb", "Zn")) |> 
+  ggplot(aes(x = test_raw, y = value_mgkg, colour = site)) +
+  geom_point() +
+  facet_wrap(~site)
 
 
 
