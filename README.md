@@ -90,6 +90,6 @@ Raven settings:
 - x axis: 20 sec per line
 - y axis: 0 - 4 kHz
 
-up next: LVR 05-20 @ 02:30:00
+up next: LVR 05-20 @ 09:45:00
 
-Rate: I completed 5 hours (20 minute segments) of recordings in just under 2 hours of IRL time. Then 6 hours (24 minute segments) of recordings in just under 2.5 hours of IRL time (?).
+Rate: I completed 5 hours (20 minute segments) of recordings in just under 2 hours of IRL time. Then 6 hours (24 minute segments) of recordings in just under 2.5 hours of IRL time (?). Then 2:15 in 1:45 of IRL. 
