@@ -93,7 +93,7 @@ Raven settings:
 finished LVR 05-19 15:00:00 - 05-20 14:45:00
 finished MGV 05-19 15:00:00 - 05-20 14:45:00
 
-up next: LVR 05-26 @ 20:30:00
+up next: LVR 05-27 @ 04:00:00
 
 Rate: I completed 5 hours (20 minute segments) of recordings in just under 2 hours of IRL time. Then 6 hours (24 minute segments) of recordings in just under 2.5 hours of IRL time (?). Then 2:15 in 1:45 of IRL. Then 7:45 in 2:45 of IRL.
 
