@@ -56,3 +56,11 @@ up next: LVR 05-27 @ 10:15:00
 Rate: I completed 5 hours (20 minute segments) of recordings in just under 2 hours of IRL time. Then 6 hours (24 minute segments) of recordings in just under 2.5 hours of IRL time (?). Then 2:15 in 1:45 of IRL. Then 7:45 in 2:45 of IRL.
 
 Real world resolution: The x-axis is 2.6cm or 1 1/32in per second. The y-axis is 6.4cm or 2 1/2in per 4kHz.
+
+<br>
+
+including measurements:
+
+- LVR QC: completed 5/19-20 period. next to QC: box 3873
+
+- MGV QC: next to QC: box 1
