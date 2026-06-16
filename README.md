@@ -63,4 +63,4 @@ including measurements:
 
 - LVR QC: completed 5/19-20 period. next to QC: box 3873
 
-- MGV QC: next to QC: box 1
+- MGV QC: next to QC: box 1617
