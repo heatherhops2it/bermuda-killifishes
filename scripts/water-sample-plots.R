@@ -84,8 +84,40 @@ df_p |> filter(test_raw %in% c("As", "Cd", "Cr", "Cu", "Ni", "Pb", "Zn")) |>
 
 
 
+# site change over time (horizontal) ------------------------
+
+df |> select(site, test, value, sample_date) |> 
+  left_join(daygroups, by = join_by(sample_date)) |> 
+  filter(site %in% c("WWK", "MGV", "LVR")) |> 
+  left_join(fort, by = join_by(test, site)) |> 
+  na.omit() |> 
+  filter(test_raw %in% c("As", "Cd", "Cr", "Cu", "Ni", "Pb", "Zn")) |> 
+  ggplot(aes(y = test_raw, x = value, colour = sample_group)) +
+  geom_point() +
+  facet_wrap(~site)
 
 
+
+# test on y, value on x, colour sample group ------------------------------
+fort_limited <- fort |> 
+  mutate(test_small = test_raw) |> 
+  mutate(test_raw = test) |> 
+  select(test, test_small)
+
+df_m <- df |> 
+  select(site, test, value, sample_date) |> 
+  left_join(daygroups, by = join_by(sample_date)) |> 
+  left_join(sample_list, by = join_by(test)) |> 
+  filter(test %in% sample_list$test) |> 
+  na.omit() 
+  group_by(new_names, test, sample_group)
+  summarise(meanval = mean(value))
+
+
+df_m |> ggplot(aes(y = new_names, x = value, colour = sample_group)) +
+  geom_boxplot() +
+  labs(y = "Test",
+       x = "Mean value")
 
 
 
