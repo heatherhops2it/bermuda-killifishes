@@ -97,21 +97,30 @@ autoplot(pc, data = harmonics, colour = 'site',
 
 
 
-# trying with a different package -----------------------------------------
+# frogs: time of day? -----------------------------------------------------
 
-## install.packages("FactoMineR")
-## install.packages("factoextra")
-library(FactoMineR)
-library(factoextra)
+lvfg <- lvr |> 
+  clean_names() |> 
+  filter(source == "anuran") |> 
+  select(-selection, -view, -channel, -begin_time_s, -end_time_s, 
+         -low_freq_hz, -high_freq_hz, -begin_path,
+         -file_offset_s, -colour, -source) |> 
+  mutate(dates = as_datetime(substr(begin_file, 25, 39))) |> 
+  mutate(times = substr(begin_file, 34,39)) |> 
+  mutate(hours = substr(times, 1,2))
 
-# Perform PCA using FactoMineR
-pca_result_fm <- nonfrogs |> 
-  select(-type, -site) |> 
-  PCA(scale.unit = TRUE, graph = FALSE)
 
-# Create a biplot using FactoMineR and factoextra
-fviz_pca_biplot(pca_result_fm, repel = TRUE,
-                col.var = "blue", # Variables color
-                col.ind = nonfrogs$site, # Individuals color by groups
-                palette = c("#00AFBB", "#E7B800", "#FC4E07"),
-                addEllipses = TRUE, ellipse.level = 0.95)
+pc <- lvfg |> 
+  select(-begin_file, -type, -site, -dates, -times, -hours) |> 
+  prcomp(center = TRUE, 
+         scale. = TRUE)
+autoplot(pc, data = lvfg, colour = 'hours', loadings = FALSE)  
+
+
+## general data exploration of frogs vs time
+
+lvfg |> 
+  ggplot(aes(x = dates, y = dur_90_percent_s)) +
+  geom_point() +
+  geom_smooth()
+
