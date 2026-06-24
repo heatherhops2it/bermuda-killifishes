@@ -3,8 +3,7 @@ library(janitor)
 library(stats)
 
 lvr <- read_delim(file = "processed_data/soundscapes/2025-lvr-qc-source.txt")
-mgv <- read_delim(file = "processed_data/soundscapes/2025-mgv-qc-source.txt") |> 
-  select(-'pulse count')
+mgv <- read_delim(file = "processed_data/soundscapes/2025-mgv-qc-source.txt")
 
 df <- bind_rows(lvr, mgv) |> 
   clean_names() |> 
@@ -77,9 +76,11 @@ autoplot(pc, data = pulses, colour = 'site',
 
 
 chains <- nonfrogs |> 
-  filter(type == "chain")
+  filter(type == "chain") |> 
+  na.omit(pulse_count) |> 
+  mutate(pulse_density = pulse_count/dur_90_percent_s)
 pc <- chains |> 
-  select(-type, -site) |> 
+  select(-source, -type, -site) |> 
   prcomp(center = TRUE,
          scale. = TRUE)
 autoplot(pc, data = chains, colour = 'site', 
