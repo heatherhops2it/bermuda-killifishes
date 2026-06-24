@@ -3,7 +3,8 @@ library(janitor)
 library(stats)
 
 lvr <- read_delim(file = "processed_data/soundscapes/2025-lvr-qc-source.txt")
-mgv <- read_delim(file = "processed_data/soundscapes/2025-mgv-qc-source.txt")
+mgv <- read_delim(file = "processed_data/soundscapes/2025-mgv-qc-source.txt") |> 
+  select(-'pulse count')
 
 df <- bind_rows(lvr, mgv) |> 
   clean_names() |> 
