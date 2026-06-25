@@ -23,7 +23,9 @@ df <- bind_rows(lvr, mgv) |>
 ## only show the aquatic sounds
 fsh <- df |> 
   filter(source == 'aquatic') |> 
-  select(-source)
+  select(-source) |> 
+  filter(selection != "4262") |> 
+  filter(type %in% c("chain", "harmonic"))
 
 
 
@@ -63,17 +65,18 @@ cor_fsh |>
 
 ## refine the dataframe to use variables with max eigenvalues and min correlation(?)
 fsh_ref <- fsh |> 
-  select(selection, freq_95_percent_hz, time_25_percent_rel, dur_50_percent_s, site, type)
+  select(site, type,
+         dur_50_percent_s, center_freq_hz, freq_95_percent_hz, time_25_percent_rel)
 pc_ref <- fsh_ref |> 
-  select(-selection, -site, -type) |> 
+  select(-site, -type) |> 
   prcomp(center = TRUE,
          scale. = TRUE)
 
-autoplot(pc_ref, data = fsh_ref, colour = 'site', shape = 'type',
+autoplot(pc_ref, data = fsh_ref, colour = 'site',
          loadings = TRUE, loadings.label = TRUE) +
   labs(title = "refined all aquatic sounds")
 
-## now the first two PCs explain 69.58% of the variation
+## now the first two PCs explain 77.44% of the variation
 
 
 
@@ -128,7 +131,7 @@ autoplot(pc_cha_ref, data = cha_ref, colour = 'site',
          loadings = TRUE, loadings.label = TRUE) +
   labs(title = "refined chains with pulse counts")
 
-## now the first two PCs explain 68.71% of the variation
+## now the first two PCs explain 70.71% of the variation
 
 
 # harmonics ---------------------------------------------------------------
