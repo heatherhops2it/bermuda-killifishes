@@ -70,7 +70,8 @@ pc_ref <- fsh_ref |>
          scale. = TRUE)
 
 autoplot(pc_ref, data = fsh_ref, colour = 'site', shape = 'type',
-         loadings = TRUE, loadings.label = TRUE)
+         loadings = TRUE, loadings.label = TRUE) +
+  labs(title = "refined all aquatic sounds")
 
 ## now the first two PCs explain 69.58% of the variation
 
@@ -83,7 +84,8 @@ autoplot(pc_ref, data = fsh_ref, colour = 'site', shape = 'type',
 fsh_cha <- fsh |> 
   filter(type == 'chain') |> 
   select(-selection, -type) |> 
-  na.omit() 
+  na.omit() |> 
+  mutate(pulse_density = pulse_count/dur_90_percent_s)
 ## run the PCA
 pc_cha <- fsh_cha |> 
   select(-site) |> 
@@ -92,11 +94,41 @@ pc_cha <- fsh_cha |>
 
 ## make a plot
 autoplot(pc_cha, data = fsh_cha, colour = 'site', 
-         loadings = FALSE) +
+         loadings = TRUE, loadings.label = TRUE) +
   labs(title = "chains with pulse counts")
 
 ## the first two PCs explain 57.65% of the variation
 
+## check for correlation between the variables
+cor_cha <- fsh_cha |> 
+  select(-site) |> 
+  cor(method = c("pearson", "kendall", "spearman")) |> 
+  melt()
+cor_cha |> 
+  mutate(rounded = round(value, digits = 2)) |> 
+  ggplot(aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() +
+  geom_text(aes(Var2, Var1, label = rounded)) +
+  theme(axis.text.x = element_text(angle = 45))
+# summarise the correlation values to see if there are some variables that typically have less correlation
+cor_cha |> 
+  group_by(Var1) |> 
+  summarise(total = sum(value))
+
+
+## refine the dataframe to use variables with max eigenvalues and min correlation(?)
+cha_ref <- fsh_cha |> 
+  select(time_25_percent_rel, time_75_percent_rel, dur_50_percent_s, pulse_density, site)
+pc_cha_ref <- cha_ref |> 
+  select(-site) |> 
+  prcomp(center = TRUE,
+         scale. = TRUE)
+
+autoplot(pc_cha_ref, data = cha_ref, colour = 'site',
+         loadings = TRUE, loadings.label = TRUE) +
+  labs(title = "refined chains with pulse counts")
+
+## now the first two PCs explain 68.71% of the variation
 
 
 # harmonics ---------------------------------------------------------------
