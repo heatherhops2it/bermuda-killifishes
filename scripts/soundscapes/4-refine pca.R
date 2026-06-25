@@ -145,7 +145,9 @@ pc_ham <- fsh_ham |>
 
 ## make a plot
 autoplot(pc_ham, data = fsh_ham, colour = 'site', 
-         loadings = FALSE) +
+         loadings = TRUE, loadings.label = TRUE) +
   labs(title = "harmonics")
 
 ## the first two PCs explain 51.42% of the variation
+
+## somewhat dffcult to move past this point while still comparing the two sites, since there are only two LVR harmonics
