@@ -4,6 +4,7 @@
 library(tidyverse)
 library(janitor)
 library(ggfortify)
+library(ggforce)  # install.packages("ggforce")
 library(reshape2)  # install.packages("reshape2")
 
 
@@ -74,7 +75,8 @@ pc_ref <- fsh_ref |>
 
 autoplot(pc_ref, data = fsh_ref, colour = 'site',
          loadings = TRUE, loadings.label = TRUE) +
-  labs(title = "refined all aquatic sounds")
+  labs(title = "refined all aquatic sounds") +
+  stat_ellipse(aes(colour = site, group = site))
 
 ## now the first two PCs explain 77.44% of the variation
 
