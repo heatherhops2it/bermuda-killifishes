@@ -113,10 +113,10 @@ lvfg <- lvr |>
 
 
 pc <- lvfg |> 
-  select(-begin_file, -type, -site, -dates, -times, -hours) |> 
+  select(-begin_file, -type, -site, -dates, -times, -hours, -pulse_count) |> 
   prcomp(center = TRUE, 
          scale. = TRUE)
-autoplot(pc, data = lvfg, colour = 'hours', loadings = FALSE)  
+autoplot(pc, data = lvfg, colour = 'dates', loadings = FALSE)
 
 
 ## general data exploration of frogs vs time
