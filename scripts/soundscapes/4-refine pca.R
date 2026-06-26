@@ -6,6 +6,7 @@ library(janitor)
 library(ggfortify)
 library(ggforce)  # install.packages("ggforce")
 library(reshape2)  # install.packages("reshape2")
+library(MetBrewer)
 
 
 # load data ---------------------------------------------------------------
@@ -68,18 +69,21 @@ cor_df |>
 
 ## refine the dataframe to use variables with max eigenvalues and min correlation(?)
 df_ref <- df |> 
-  select(site, type, source,
-         center_time_rel, dur_50_percent_s, bw_50_percent_hz, freq_5_percent_hz)
+  select(-freq_95_percent_hz, -freq_75_percent_hz, -freq_25_percent_hz, -center_freq_hz, -bw_90_percent_hz, -dur_90_percent_s, -bw_50_percent_hz)
 pc_df_ref <- df_ref |> 
-  select(-site, -type, -source) |> 
+  select(-site, -type, -source, -selection, -pulse_count) |> 
   prcomp(center = TRUE,
          scale. = TRUE)
 
-autoplot(pc_df_ref, data = df_ref, colour = 'source', shape = 'site', size = 4,
-         loadings = TRUE, loadings.label = TRUE) +
+autoplot(pc_df_ref, data = df_ref, colour = 'source',
+         shape = 'site', size = 4, alpha = 0.5,
+         loadings = FALSE, loadings.label = FALSE) +
+  scale_shape_manual(values = c(17, 16)) +
+  theme_light() +
+  scale_colour_manual(values = c("#C91729", "#22BC2E", "#2767FD")) +
   labs(title = "refined all sounds")
 
-## now the first two PCs explain XX% of the variation
+## now the first two PCs explain 65.47% of the variation
 
 
 
