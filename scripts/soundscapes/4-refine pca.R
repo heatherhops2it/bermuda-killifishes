@@ -79,7 +79,7 @@ autoplot(pc_df_ref, data = df_ref, colour = 'source',
          shape = 'site', size = 4, alpha = 0.5,
          loadings = FALSE, loadings.label = FALSE) +
   scale_shape_manual(values = c(17, 16)) +
-  theme_light() +
+  theme_minimal() +
   scale_colour_manual(values = c("#C91729", "#22BC2E", "#2767FD")) +
   labs(title = "refined all sounds")
 
