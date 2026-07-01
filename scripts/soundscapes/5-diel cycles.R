@@ -25,7 +25,7 @@ df <- bind_rows(lvr, mgv) |>
   filter(source %in% c("anuran", "aquatic"))
 
 df_sm <- df |> 
-  group_by(hours, source) |> 
+  group_by(hours, source, site) |> 
   summarise(call_density = sum(count)) |> 
   mutate(groupy = floor(hours/3))
 
@@ -37,13 +37,13 @@ df_sm <- df |>
 df_sm |> 
   mutate(groupy = as.character(groupy)) |> 
   ggplot(aes(x = groupy, y = call_density)) +
-  geom_col(aes(fill = source), position = position_dodge(0.9)) +
+  geom_col(aes(fill = site), position = position_dodge(0.9)) +
   scale_x_discrete(labels = c('00-02', '03-05', '06-08', '09-11', '12-14', '15-17', '18-20', '21-23')) +
   labs(
     x = "Hour (ADT)", 
     y = "Number of Calls",
     fill = "Source") +
-  facet_wrap(~source, nrow = 2)
+  facet_wrap(~site, nrow = 2)
 
 
 
