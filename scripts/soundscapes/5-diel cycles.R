@@ -17,24 +17,28 @@ df <- bind_rows(lvr, mgv) |>
   select(-view, -channel, -begin_time_s, -end_time_s, 
          -low_freq_hz, -high_freq_hz, -begin_path,
          -file_offset_s, -colour) |> 
-  filter(site != is.na(site)) |> 
-  mutate(dates = as_datetime(substr(begin_file, 25, 39), tz = "GMT")) |> 
-  mutate(dates = with_tz(dates, tzone = "Atlantic/Bermuda")) |> 
-  mutate(hours = hour(dates)) |> 
+  filter(site != is.na(site)) |>    ## remove any annotations without a site listed
+  mutate(dates = as_datetime(substr(begin_file, 25, 39), tz = "GMT")) |>   ## extract the datetime from the file name & ensure that it is in GMT/UTC
+  mutate(dates = with_tz(dates, tzone = "Atlantic/Bermuda")) |>   ## change timezone to Bermuda 
+  mutate(hours = hour(dates)) |>   
   mutate(count = 1) |> 
-  filter(source %in% c("anuran", "aquatic"))
+  filter(source %in% c("anuran", "aquatic"))  ## only looking at anuran & aquatic sounds
 
 df_sm <- df |> 
   group_by(hours, source, site) |> 
   summarise(call_density = sum(count)) |> 
-  mutate(groupy = floor(hours/3))
+  mutate(groupy = floor(hours/3))   ## group the call counts into 3-hour bins
 
+
+## need to export the summary file and re-load it. because I still don't know how to add in the 0-values in R...
+write_csv(df_sm, file = "processed_data/soundscapes/2025-lvrmgv-summary.csv")
+df_in <- read_csv(file = "processed_data/soundscapes/2025-lvrmgv-summary.csv")
 
 
 # make plots --------------------------------------------------------------
 
 
-df_sm |> 
+df_in |> 
   mutate(groupy = as.character(groupy)) |> 
   ggplot(aes(x = groupy, y = call_density)) +
   geom_col(aes(fill = site), position = position_dodge(0.9)) +
@@ -43,7 +47,7 @@ df_sm |>
     x = "Hour (ADT)", 
     y = "Number of Calls",
     fill = "Source") +
-  facet_wrap(~site, nrow = 2)
+  theme_minimal()
 
 
 
