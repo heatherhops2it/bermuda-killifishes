@@ -1,0 +1,17 @@
+EPA ECOTOX search output on 2026/08/13
+
+Species: Fundulus heteroclitus (Mummichog)
+
+Chemical Group:
+- Aluminum
+- Arsenic
+- Cadmium
+- Chromium
+- Cobalt
+- Copper
+- Iron
+- Lead
+- Mercury
+- Nickel
+- Vanadium
+- Zinc
