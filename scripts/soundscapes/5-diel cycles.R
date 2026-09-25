@@ -41,7 +41,7 @@ df_in <- read_csv(file = "processed_data/soundscapes/2025-lvrmgv-summary.csv")
 df_in |> 
   mutate(groupy = as.character(groupy)) |> 
   ggplot(aes(x = groupy, y = call_density)) +
-  geom_col(aes(fill = source), position = position_dodge(0.9)) +
+  geom_col(aes(fill = site), position = position_dodge(0.9)) +
   scale_x_discrete(labels = c('00-02', '03-05', '06-08', '09-11', '12-14', '15-17', '18-20', '21-23')) +
   labs(
     x = "Hour (ADT)", 
