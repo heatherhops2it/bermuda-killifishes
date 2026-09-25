@@ -31,7 +31,7 @@ df_sm <- df |>
 
 
 ## need to export the summary file and re-load it. because I still don't know how to add in the 0-values in R...
-write_csv(df_sm, file = "processed_data/soundscapes/2025-lvrmgv-summary.csv")
+
 df_in <- read_csv(file = "processed_data/soundscapes/2025-lvrmgv-summary.csv")
 
 
@@ -47,7 +47,8 @@ df_in |>
     x = "Hour (ADT)", 
     y = "Number of Calls",
     fill = "Source") +
-  theme_minimal()
+  theme_minimal() +
+  scale_colour_manual(values = c("#22BC2E", "#2767FD"))
 
 
 
