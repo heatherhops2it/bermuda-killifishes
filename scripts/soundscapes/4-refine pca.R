@@ -76,7 +76,7 @@ pc_df_ref <- df_ref |>
          scale. = TRUE)
 
 autoplot(pc_df_ref, data = df_ref, colour = 'source',
-         shape = 'site', size = 4, alpha = 0.5,
+         size = 4, alpha = 0.7, 
          loadings = FALSE, loadings.label = FALSE) +
   scale_shape_manual(values = c(17, 16)) +
   theme_minimal() +
@@ -132,10 +132,12 @@ pc_ref <- fsh_ref |>
   prcomp(center = TRUE,
          scale. = TRUE)
 
-autoplot(pc_ref, data = fsh_ref, colour = 'site',
-         loadings = TRUE, loadings.label = TRUE) +
-  labs(title = "refined all aquatic sounds") +
-  stat_ellipse(aes(colour = site, group = site))
+autoplot(pc_ref, data = fsh_ref, 
+         colour = 'site', size = 4, alpha = 0.7, shape = 'site',
+         loadings = FALSE, loadings.label = FALSE) +
+  scale_colour_manual(values = c("#1042b3", "#689fff")) +
+  theme_minimal() +
+  labs(title = "refined all aquatic sounds")
 
 ## now the first two PCs explain 77.44% of the variation
 

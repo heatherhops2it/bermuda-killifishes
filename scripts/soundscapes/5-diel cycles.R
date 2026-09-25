@@ -48,7 +48,7 @@ df_in |>
     y = "Number of Calls",
     fill = "Source") +
   theme_minimal() +
-  scale_colour_manual(values = c("#22BC2E", "#2767FD"))
+  scale_fill_manual(values = c("#22BC2E", "#2767FD"))
 
 
 
