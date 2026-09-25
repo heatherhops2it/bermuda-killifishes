@@ -47,15 +47,27 @@ df_d <- df_d |>
 
 
 
-# graph calibration curves ------------------------------------------------
 
-## again, we'll start with the UNDILUTED samples
-## due to visualisation problems, we'll do this one element at a time...
+# ranges of curves --------------------------------------------------------
 
-df_u |> 
-  filter(new_names == "Al") |> 
-  ggplot(aes(x = value, y = site, colour = new_names)) +
-  geom_point()
+df_dmin <- df_d |> 
+  group_by(site, new_names) |> 
+  summarise(new_value = min(value)) |> 
+  mutate(end = "min")
+
+df_dmax <- df_d |> 
+  group_by(site, new_names) |> 
+  summarise(new_value = max(value)) |> 
+  mutate(end = "max")
+
+df_drange <- df_dmin |> 
+  bind_rows(df_dmax) 
+
+
+
+# highlight problem children ----------------------------------------------
+
+if()
 
 
 
